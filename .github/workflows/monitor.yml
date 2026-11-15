@@ -30,7 +30,8 @@ jobs:
         env:
           ORG: ${{ github.repository_owner }}
           GH_TOKEN: ${{ secrets.ORG_MONITOR_TOKEN || secrets.GITHUB_TOKEN }}
-          INCLUDE_PRIVATE: 'false'
+          INCLUDE_PRIVATE: 'true'
+          MASK_PRIVATE: 'true'
         run: node scripts/monitor.mjs
 
       - name: Commit jika ada perubahan
