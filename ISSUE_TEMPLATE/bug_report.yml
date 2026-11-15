@@ -1,0 +1,32 @@
+name: 🐞 Laporan bug
+description: Laporkan sesuatu yang tidak berjalan semestinya
+labels: ['bug']
+body:
+  - type: textarea
+    id: apa
+    attributes:
+      label: Apa yang terjadi?
+      description: Jelaskan singkat, sertakan pesan error jika ada.
+    validations:
+      required: true
+  - type: textarea
+    id: langkah
+    attributes:
+      label: Langkah mereproduksi
+      placeholder: |
+        1. Buka ...
+        2. Klik ...
+        3. Lihat error
+    validations:
+      required: true
+  - type: textarea
+    id: harapan
+    attributes:
+      label: Hasil yang diharapkan
+  - type: dropdown
+    id: env
+    attributes:
+      label: Lingkungan
+      options: [Produksi, Staging, Lokal]
+    validations:
+      required: true

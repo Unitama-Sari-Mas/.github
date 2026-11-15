@@ -1,0 +1,21 @@
+name: ✨ Permintaan fitur
+description: Usulkan fitur atau perbaikan
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: masalah
+    attributes:
+      label: Masalah yang ingin diselesaikan
+    validations:
+      required: true
+  - type: textarea
+    id: usulan
+    attributes:
+      label: Usulan solusi
+    validations:
+      required: true
+  - type: dropdown
+    id: prioritas
+    attributes:
+      label: Prioritas
+      options: [Rendah, Sedang, Tinggi]
