@@ -99,7 +99,7 @@
       </table>
     </div>
   </section>
-  <footer>Data diperbarui otomatis oleh GitHub Actions. Hanya repo publik ditampilkan kecuali dikonfigurasi lain.</footer>
+  <footer>Data diperbarui otomatis oleh GitHub Actions. Repo privat dihitung dalam total, tetapi nama, deskripsi, dan isinya tidak ditampilkan.</footer>
 </div>
 <div class="tip" id="tip"></div>
 
@@ -129,6 +129,8 @@ function demoData() {
     mk('contoh-ai', 'Sampel: eksperimen AI internal', 'Python', 11, 2, 0, 2, 'pending', 'active', 9),
     mk('contoh-erp', 'Sampel: ERP', 'PHP', 4, 12, 3, 0, 'none', 'slow', 47),
     mk('contoh-lama', 'Sampel: repo lama', 'Shell', 0, 1, 0, 0, 'none', 'stale', 210),
+    { name: 'Repo privat #1', description: '', language: null, languageColor: null, url: null, private: true, stars: 0, forks: 0,
+      commits30d: 18, openIssues: 5, openPRs: 2, ci: 'pass', health: 'active', pushedAt: new Date(Date.now() - 86400000).toISOString() },
   ];
   const sum = (k) => repos.reduce((a, r) => a + r[k], 0);
   return { org: 'Unitama-Sari-Mas', generatedAt: new Date().toISOString(), repos, totals: {
@@ -174,7 +176,7 @@ function render() {
       return (typeof x === 'number' ? x - y : String(x).localeCompare(String(y))) * sortDir;
     });
   $('#body').innerHTML = rows.map((r) => `<tr>
-    <td><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>${r.private ? ' 🔒' : ''}</td>
+    <td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>` : `<span>🔒 ${esc(r.name)}</span>`}</td>
     <td class="desc">${esc(r.description) || '—'}</td>
     <td>${r.language ? `<span class="dot" style="${r.languageColor ? 'background:' + esc(r.languageColor) : ''}"></span>${esc(r.language)}` : '—'}</td>
     <td class="num">${r.commits30d}</td><td class="num">${r.openIssues}</td><td class="num">${r.openPRs}</td><td class="num">${r.stars}</td>
