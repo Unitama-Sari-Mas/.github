@@ -32,7 +32,12 @@ Tim engineering PT. Unitama Sarimas (USM) membangun dan merawat sistem internal:
 ## 📡 Status repo (real-time)
 
 <!--MONITOR:START-->
-_Tabel ini diisi otomatis oleh workflow **Monitor repo organisasi** (jalankan manual sekali dari tab Actions)._
+**0** repo · **0** aktif · **0** commit (30 hari) · **0** issue terbuka · **0** PR terbuka
+
+| Repo | Bahasa | Commit 30h | Issue | PR | CI | Status |
+|---|---|---:|---:|---:|:---:|---|
+
+<sub>Diperbarui otomatis 15 Nov 2026, 14.42 WIB · <a href="https://unitama-sari-mas.github.io/.github/">buka dashboard lengkap</a></sub>
 <!--MONITOR:END-->
 
 ## 📁 Area utama
