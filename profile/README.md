@@ -32,12 +32,22 @@ Tim engineering PT. Unitama Sarimas (USM) membangun dan merawat sistem internal:
 ## 📡 Status repo (real-time)
 
 <!--MONITOR:START-->
-**0** repo · **0** aktif · **0** commit (30 hari) · **0** issue terbuka · **0** PR terbuka
+**26** repo · **7** aktif · **507** commit (30 hari) · **0** issue terbuka · **4** PR terbuka
 
 | Repo | Bahasa | Commit 30h | Issue | PR | CI | Status |
 |---|---|---:|---:|---:|:---:|---|
+| 🔒 Repo privat #2 | — | 192 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #4 | — | 163 | 0 | 4 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #7 | — | 142 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #6 | — | 4 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #1 | — | 3 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #5 | — | 3 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #3 | — | 0 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #8 | — | 0 | 0 | 0 | ➖ | 🟡 Lambat |
+| 🔒 Repo privat #9 | — | 0 | 0 | 0 | ➖ | 🔴 Stagnan |
+| 🔒 Repo privat #10 | — | 0 | 0 | 0 | ➖ | 🔴 Stagnan |
 
-<sub>Diperbarui otomatis 15 Nov 2026, 14.51 WIB · <a href="https://unitama-sari-mas.github.io/.github/">buka dashboard lengkap</a></sub>
+<sub>Diperbarui otomatis 15 Nov 2026, 14.52 WIB · <a href="https://unitama-sari-mas.github.io/.github/">buka dashboard lengkap</a></sub>
 <!--MONITOR:END-->
 
 ## 📁 Area utama
