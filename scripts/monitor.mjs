@@ -6,6 +6,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 const ORG = process.env.ORG || 'Unitama-Sari-Mas';
 const TOKEN = process.env.GH_TOKEN;
 const INCLUDE_PRIVATE = process.env.INCLUDE_PRIVATE === 'true'; // default: hanya repo publik
+// Repo privat disamarkan (nama, deskripsi, bahasa, link disembunyikan) kecuali MASK_PRIVATE=false.
+const MASK_PRIVATE = process.env.MASK_PRIVATE !== 'false';
 const TOP_N = Number(process.env.TOP_N || 10);
 const README = 'profile/README.md';
 const DATA = 'docs/data/repos.json';
@@ -60,17 +62,23 @@ const health = (r) => {
 };
 const ciOf = (s) => (!s ? 'none' : s === 'SUCCESS' ? 'pass' : ['FAILURE', 'ERROR'].includes(s) ? 'fail' : 'pending');
 
+let privateNo = 0;
 const repos = raw
   .filter((r) => !r.isFork && r.name !== '.github')
-  .map((r) => ({
-    name: r.name,
-    description: r.description || '',
-    url: r.url,
+  .map((r) => {
+    const hide = r.isPrivate && MASK_PRIVATE;
+    const label = hide ? `Repo privat #${++privateNo}` : r.name;
+    return { r, hide, label };
+  })
+  .map(({ r, hide, label }) => ({
+    name: label,
+    description: hide ? '' : r.description || '',
+    url: hide ? null : r.url,
     private: r.isPrivate,
-    language: r.primaryLanguage?.name || null,
-    languageColor: r.primaryLanguage?.color || null,
-    stars: r.stargazerCount,
-    forks: r.forkCount,
+    language: hide ? null : r.primaryLanguage?.name || null,
+    languageColor: hide ? null : r.primaryLanguage?.color || null,
+    stars: hide ? 0 : r.stargazerCount,
+    forks: hide ? 0 : r.forkCount,
     openIssues: r.issues.totalCount,
     openPRs: r.pullRequests.totalCount,
     commits30d: r.defaultBranchRef?.target?.recent?.totalCount ?? 0,
@@ -102,7 +110,7 @@ const stamp = new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium', timeStyle:
 
 const top = [...repos].sort((a, b) => b.commits30d - a.commits30d || new Date(b.pushedAt) - new Date(a.pushedAt)).slice(0, TOP_N);
 const rows = top.map((r) =>
-  `| [${r.name}](${r.url}) | ${r.language ?? '—'} | ${r.commits30d} | ${r.openIssues} | ${r.openPRs} | ${C[r.ci]} | ${H[r.health]} |`);
+  `| ${r.url ? `[${r.name}](${r.url})` : `🔒 ${r.name}`} | ${r.language ?? '—'} | ${r.commits30d} | ${r.openIssues} | ${r.openPRs} | ${C[r.ci]} | ${H[r.health]} |`);
 
 const block = [
   '<!--MONITOR:START-->',
