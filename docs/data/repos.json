@@ -1,14 +1,14 @@
 {
   "org": "Unitama-Sari-Mas",
-  "generatedAt": "2026-11-16T06:33:27.487Z",
+  "generatedAt": "2026-11-16T22:06:21.324Z",
   "includePrivate": true,
   "totals": {
-    "repos": 26,
+    "repos": 24,
     "active": 8,
-    "stale": 18,
+    "stale": 16,
     "commits30d": 487,
     "openIssues": 0,
-    "openPRs": 4,
+    "openPRs": 3,
     "ciFailing": 0
   },
   "repos": [
@@ -22,14 +22,46 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
+      "openPRs": 2,
+      "commits30d": 163,
+      "ci": "none",
+      "health": "active",
+      "pushedAt": "2026-11-16T15:46:21Z"
+    },
+    {
+      "name": "Repo privat #2",
+      "description": "",
+      "url": null,
+      "private": true,
+      "language": null,
+      "languageColor": null,
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "openPRs": 1,
+      "commits30d": 193,
+      "ci": "none",
+      "health": "active",
+      "pushedAt": "2026-11-16T15:04:37Z"
+    },
+    {
+      "name": "Repo privat #3",
+      "description": "",
+      "url": null,
+      "private": true,
+      "language": null,
+      "languageColor": null,
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
       "openPRs": 0,
       "commits30d": 0,
       "ci": "none",
       "health": "active",
-      "pushedAt": "2026-11-16T04:52:38Z"
+      "pushedAt": "2026-11-16T08:07:01Z"
     },
     {
-      "name": "Repo privat #2",
+      "name": "Repo privat #4",
       "description": "",
       "url": null,
       "private": true,
@@ -45,7 +77,7 @@
       "pushedAt": "2026-11-15T13:23:37Z"
     },
     {
-      "name": "Repo privat #3",
+      "name": "Repo privat #5",
       "description": "",
       "url": null,
       "private": true,
@@ -59,38 +91,6 @@
       "ci": "none",
       "health": "active",
       "pushedAt": "2026-11-15T07:14:08Z"
-    },
-    {
-      "name": "Repo privat #4",
-      "description": "",
-      "url": null,
-      "private": true,
-      "language": null,
-      "languageColor": null,
-      "stars": 0,
-      "forks": 0,
-      "openIssues": 0,
-      "openPRs": 0,
-      "commits30d": 190,
-      "ci": "none",
-      "health": "active",
-      "pushedAt": "2026-11-14T14:55:18Z"
-    },
-    {
-      "name": "Repo privat #5",
-      "description": "",
-      "url": null,
-      "private": true,
-      "language": null,
-      "languageColor": null,
-      "stars": 0,
-      "forks": 0,
-      "openIssues": 0,
-      "openPRs": 4,
-      "commits30d": 161,
-      "ci": "none",
-      "health": "active",
-      "pushedAt": "2026-11-13T03:37:20Z"
     },
     {
       "name": "Repo privat #6",
@@ -135,7 +135,7 @@
       "forks": 0,
       "openIssues": 0,
       "openPRs": 0,
-      "commits30d": 126,
+      "commits30d": 121,
       "ci": "none",
       "health": "active",
       "pushedAt": "2026-11-06T10:02:50Z"
@@ -218,7 +218,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-06-05T08:43:56Z"
+      "pushedAt": "2026-06-05T04:33:10Z"
     },
     {
       "name": "Repo privat #14",
@@ -234,7 +234,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-06-05T04:33:10Z"
+      "pushedAt": "2026-05-29T03:41:02Z"
     },
     {
       "name": "Repo privat #15",
@@ -250,7 +250,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-06-03T03:47:46Z"
+      "pushedAt": "2026-05-22T04:25:58Z"
     },
     {
       "name": "Repo privat #16",
@@ -266,7 +266,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-05-29T03:41:02Z"
+      "pushedAt": "2026-05-18T03:28:49Z"
     },
     {
       "name": "Repo privat #17",
@@ -282,7 +282,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-05-22T04:25:58Z"
+      "pushedAt": "2026-05-09T20:34:50Z"
     },
     {
       "name": "Repo privat #18",
@@ -298,7 +298,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-05-18T03:28:49Z"
+      "pushedAt": "2026-02-19T02:35:26Z"
     },
     {
       "name": "Repo privat #19",
@@ -314,7 +314,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-05-09T20:34:50Z"
+      "pushedAt": "2026-02-09T01:48:55Z"
     },
     {
       "name": "Repo privat #20",
@@ -330,7 +330,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-02-19T02:35:26Z"
+      "pushedAt": "2025-11-25T06:23:45Z"
     },
     {
       "name": "Repo privat #21",
@@ -346,7 +346,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2026-02-09T01:48:55Z"
+      "pushedAt": "2025-09-08T22:37:55Z"
     },
     {
       "name": "Repo privat #22",
@@ -362,7 +362,7 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2025-11-25T06:23:45Z"
+      "pushedAt": "2024-12-16T09:52:05Z"
     },
     {
       "name": "Repo privat #23",
@@ -378,42 +378,10 @@
       "commits30d": 0,
       "ci": "none",
       "health": "stale",
-      "pushedAt": "2025-09-08T22:37:55Z"
-    },
-    {
-      "name": "Repo privat #24",
-      "description": "",
-      "url": null,
-      "private": true,
-      "language": null,
-      "languageColor": null,
-      "stars": 0,
-      "forks": 0,
-      "openIssues": 0,
-      "openPRs": 0,
-      "commits30d": 0,
-      "ci": "none",
-      "health": "stale",
-      "pushedAt": "2024-12-16T09:52:05Z"
-    },
-    {
-      "name": "Repo privat #25",
-      "description": "",
-      "url": null,
-      "private": true,
-      "language": null,
-      "languageColor": null,
-      "stars": 0,
-      "forks": 0,
-      "openIssues": 0,
-      "openPRs": 0,
-      "commits30d": 0,
-      "ci": "none",
-      "health": "stale",
       "pushedAt": "2024-10-22T09:27:25Z"
     },
     {
-      "name": "Repo privat #26",
+      "name": "Repo privat #24",
       "description": "",
       "url": null,
       "private": true,

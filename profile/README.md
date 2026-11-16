@@ -32,22 +32,22 @@ Tim engineering PT. Unitama Sarimas (USM) membangun dan merawat sistem internal:
 ## 📡 Status repo (real-time)
 
 <!--MONITOR:START-->
-**26** repo · **8** aktif · **487** commit (30 hari) · **0** issue terbuka · **4** PR terbuka
+**24** repo · **8** aktif · **487** commit (30 hari) · **0** issue terbuka · **3** PR terbuka
 
 | Repo | Bahasa | Commit 30h | Issue | PR | CI | Status |
 |---|---|---:|---:|---:|:---:|---|
-| 🔒 Repo privat #4 | — | 190 | 0 | 0 | ➖ | 🟢 Aktif |
-| 🔒 Repo privat #5 | — | 161 | 0 | 4 | ➖ | 🟢 Aktif |
-| 🔒 Repo privat #8 | — | 126 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #2 | — | 193 | 0 | 1 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #1 | — | 163 | 0 | 2 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #8 | — | 121 | 0 | 0 | ➖ | 🟢 Aktif |
 | 🔒 Repo privat #7 | — | 4 | 0 | 0 | ➖ | 🟢 Aktif |
-| 🔒 Repo privat #3 | — | 3 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #5 | — | 3 | 0 | 0 | ➖ | 🟢 Aktif |
 | 🔒 Repo privat #6 | — | 3 | 0 | 0 | ➖ | 🟢 Aktif |
-| 🔒 Repo privat #1 | — | 0 | 0 | 0 | ➖ | 🟢 Aktif |
-| 🔒 Repo privat #2 | — | 0 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #3 | — | 0 | 0 | 0 | ➖ | 🟢 Aktif |
+| 🔒 Repo privat #4 | — | 0 | 0 | 0 | ➖ | 🟢 Aktif |
 | 🔒 Repo privat #9 | — | 0 | 0 | 0 | ➖ | 🔴 Stagnan |
 | 🔒 Repo privat #10 | — | 0 | 0 | 0 | ➖ | 🔴 Stagnan |
 
-<sub>Diperbarui otomatis 16 Nov 2026, 13.33 WIB · <a href="https://unitama-sari-mas.github.io/.github/">buka dashboard lengkap</a></sub>
+<sub>Diperbarui otomatis 17 Nov 2026, 05.06 WIB · <a href="https://unitama-sari-mas.github.io/.github/">buka dashboard lengkap</a></sub>
 <!--MONITOR:END-->
 
 ## 📁 Area utama
