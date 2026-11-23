@@ -1,6 +1,6 @@
 {
   "org": "Unitama-Sari-Mas",
-  "generatedAt": "2026-11-23T07:58:54.429Z",
+  "generatedAt": "2026-11-23T23:56:32.999Z",
   "includePrivate": true,
   "leaderDays": 30,
   "leaderMinAdditions": 20,
@@ -8,7 +8,7 @@
     "repos": 25,
     "active": 9,
     "stale": 16,
-    "commits30d": 444,
+    "commits30d": 435,
     "openIssues": 0,
     "openPRs": 3,
     "ciFailing": 0
@@ -25,7 +25,7 @@
       "forks": 0,
       "openIssues": 0,
       "openPRs": 1,
-      "commits30d": 186,
+      "commits30d": 182,
       "ci": "none",
       "health": "active",
       "pushedAt": "2026-11-23T03:56:38Z"
@@ -41,7 +41,7 @@
       "forks": 0,
       "openIssues": 0,
       "openPRs": 0,
-      "commits30d": 110,
+      "commits30d": 105,
       "ci": "none",
       "health": "active",
       "pushedAt": "2026-11-20T01:59:04Z"
@@ -420,10 +420,10 @@
       "rank": 1,
       "name": "Nyoman Kesuma",
       "avatar": "https://github.com/nyomankesuma.png?size=48",
-      "qualifying": 86,
-      "additions": 26101,
-      "commits": 110,
-      "fixes": 16,
+      "qualifying": 83,
+      "additions": 23689,
+      "commits": 105,
+      "fixes": 14,
       "repos": 1
     },
     {
@@ -450,10 +450,10 @@
       "rank": 4,
       "name": "Aep Abrag",
       "avatar": "https://github.com/abrag75.png?size=48",
-      "qualifying": 7,
-      "additions": 8402,
-      "commits": 42,
-      "fixes": 34,
+      "qualifying": 6,
+      "additions": 8060,
+      "commits": 40,
+      "fixes": 33,
       "repos": 1
     },
     {
