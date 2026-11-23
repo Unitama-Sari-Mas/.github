@@ -1,7 +1,9 @@
 {
   "org": "Unitama-Sari-Mas",
-  "generatedAt": "2026-11-23T07:42:08.608Z",
+  "generatedAt": "2026-11-23T07:58:54.429Z",
   "includePrivate": true,
+  "leaderDays": 30,
+  "leaderMinAdditions": 20,
   "totals": {
     "repos": 25,
     "active": 9,
@@ -411,6 +413,68 @@
       "ci": "none",
       "health": "stale",
       "pushedAt": "2022-07-05T04:59:57Z"
+    }
+  ],
+  "leaderboard": [
+    {
+      "rank": 1,
+      "name": "Nyoman Kesuma",
+      "avatar": "https://github.com/nyomankesuma.png?size=48",
+      "qualifying": 86,
+      "additions": 26101,
+      "commits": 110,
+      "fixes": 16,
+      "repos": 1
+    },
+    {
+      "rank": 2,
+      "name": "Scaven",
+      "avatar": "https://github.com/Devastator-19.png?size=48",
+      "qualifying": 55,
+      "additions": 25999,
+      "commits": 116,
+      "fixes": 45,
+      "repos": 3
+    },
+    {
+      "rank": 3,
+      "name": "gardian-stack",
+      "avatar": "https://github.com/gardian-stack.png?size=48",
+      "qualifying": 25,
+      "additions": 6153,
+      "commits": 39,
+      "fixes": 7,
+      "repos": 1
+    },
+    {
+      "rank": 4,
+      "name": "Aep Abrag",
+      "avatar": "https://github.com/abrag75.png?size=48",
+      "qualifying": 7,
+      "additions": 8402,
+      "commits": 42,
+      "fixes": 34,
+      "repos": 1
+    },
+    {
+      "rank": 5,
+      "name": "ryumada",
+      "avatar": null,
+      "qualifying": 1,
+      "additions": 22695,
+      "commits": 1,
+      "fixes": 0,
+      "repos": 1
+    },
+    {
+      "rank": 6,
+      "name": "Programmer USM",
+      "avatar": "https://github.com/Programmer-USM.png?size=48",
+      "qualifying": 1,
+      "additions": 32,
+      "commits": 1,
+      "fixes": 0,
+      "repos": 1
     }
   ]
 }

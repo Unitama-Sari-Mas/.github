@@ -47,8 +47,22 @@ Tim engineering PT. Unitama Sarimas (USM) membangun dan merawat sistem internal:
 | 🔒 Repo privat #8 | — | 0 | 0 | 0 | ➖ | 🟢 Aktif |
 | 🔒 Repo privat #10 | — | 0 | 0 | 0 | ➖ | 🔴 Stagnan |
 
-<sub>Diperbarui otomatis 23 Nov 2026, 14.42 WIB · <a href="https://unitama-sari-mas.github.io/.github/">buka dashboard lengkap</a></sub>
+<sub>Diperbarui otomatis 23 Nov 2026, 14.58 WIB · <a href="https://unitama-sari-mas.github.io/.github/">buka dashboard lengkap</a></sub>
 <!--MONITOR:END-->
+
+## 🏆 Kontributor rajin
+
+<!--LEADER:START-->
+| # | Kontributor | Fitur / perubahan besar | Baris ditambah |
+|:-:|---|---:|---:|
+| 🥇 | Nyoman Kesuma | 86 | 26.101 |
+| 🥈 | Scaven | 55 | 25.999 |
+| 🥉 | gardian-stack | 25 | 6.153 |
+| 4 | Aep Abrag | 7 | 8.402 |
+| 5 | ryumada | 1 | 22.695 |
+
+<sub>30 hari terakhir. Hanya commit fitur dan perubahan besar (minimal 20 baris); perbaikan bug, revert, merge, dan commit kecil tidak dihitung.</sub>
+<!--LEADER:END-->
 
 ## 📁 Area utama
 
