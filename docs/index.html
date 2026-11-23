@@ -45,6 +45,9 @@
   .bar-row .f { height: 12px; background: var(--series); border-radius: 0 4px 4px 0; min-width: 2px; }
   .bar-row .c { text-align: right; font-variant-numeric: tabular-nums; }
   .bar-row:hover .f { filter: brightness(1.15); }
+  #lb .bar-row { grid-template-columns: 210px 1fr 44px; }
+  .av { width: 20px; height: 20px; border-radius: 50%; vertical-align: middle; margin-right: 7px; background: var(--line); }
+  #lbPanel[hidden] { display: none; }
   .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
   .filters input { flex: 1; min-width: 180px; }
   .tablewrap { overflow-x: auto; }
@@ -83,6 +86,12 @@
   <section class="panel">
     <h2>Commit 30 hari terakhir (10 teratas)</h2>
     <div class="bars" id="bars"></div>
+  </section>
+
+  <section class="panel" id="lbPanel" hidden>
+    <h2 id="lbTitle">Kontributor rajin</h2>
+    <p class="sub" id="lbNote" style="margin:-6px 0 12px"></p>
+    <div class="bars" id="lb"></div>
   </section>
 
   <section class="panel">
@@ -133,7 +142,9 @@ function demoData() {
       commits30d: 18, openIssues: 5, openPRs: 2, ci: 'pass', health: 'active', pushedAt: new Date(Date.now() - 86400000).toISOString() },
   ];
   const sum = (k) => repos.reduce((a, r) => a + r[k], 0);
-  return { org: 'Unitama-Sari-Mas', generatedAt: new Date().toISOString(), repos, totals: {
+  const lb = [['Contoh Satu', 14, 2310, 3], ['Contoh Dua', 11, 1780, 6], ['Contoh Tiga', 7, 960, 1], ['Contoh Empat', 3, 420, 2]]
+    .map(([name, q, add, fx], i) => ({ rank: i + 1, name, avatar: null, qualifying: q, additions: add, commits: q + fx, fixes: fx, repos: 2 }));
+  return { leaderboard: lb, leaderDays: 30, leaderMinAdditions: 20, org: 'Unitama-Sari-Mas', generatedAt: new Date().toISOString(), repos, totals: {
     repos: repos.length, active: repos.filter((r) => r.health === 'active').length, stale: 1,
     commits30d: sum('commits30d'), openIssues: sum('openIssues'), openPRs: sum('openPRs'), ciFailing: 1 } };
 }
@@ -160,6 +171,19 @@ function bars(repos) {
     <div class="n" title="${esc(r.name)}">${esc(r.name)}</div>
     <div class="t"><div class="f" style="width:${(r.commits30d / max) * 100}%"></div></div>
     <div class="c">${r.commits30d}</div></div>`).join('') || '<div class="empty">Belum ada data.</div>';
+}
+
+function leaders(d) {
+  const lb = d.leaderboard, panel = $('#lbPanel');
+  if (!lb || !lb.length) { panel.hidden = true; return; }
+  panel.hidden = false;
+  $('#lbTitle').textContent = `Kontributor rajin (${d.leaderDays || 30} hari terakhir)`;
+  $('#lbNote').textContent = `Dihitung dari commit fitur dan perubahan besar (minimal ${d.leaderMinAdditions || 20} baris ditambah). Perbaikan bug, revert, merge, dan commit kecil tidak dihitung.`;
+  const max = Math.max(1, ...lb.map((x) => x.qualifying));
+  $('#lb').innerHTML = lb.map((x) => `<div class="bar-row" data-tip="${esc(x.name)}: ${x.qualifying} fitur/perubahan besar, +${x.additions} baris, ${x.fixes} perbaikan tidak dihitung">
+    <div class="n" title="${esc(x.name)}">${x.avatar ? `<img class="av" src="${esc(x.avatar)}" alt="" loading="lazy">` : ''}${x.rank}. ${esc(x.name)}</div>
+    <div class="t"><div class="f" style="width:${(x.qualifying / max) * 100}%"></div></div>
+    <div class="c">${x.qualifying}</div></div>`).join('');
 }
 
 function head() {
@@ -192,7 +216,7 @@ function sortBy(k) { sortDir = k === sortKey ? -sortDir : (['name', 'description
   $('#title').textContent = `Dashboard Repo · ${data.org}`;
   $('#updated').textContent = 'Diperbarui ' + new Intl.DateTimeFormat('id-ID', { dateStyle: 'long', timeStyle: 'short', timeZone: 'Asia/Jakarta' }).format(new Date(data.generatedAt)) + ' WIB';
   if (demo) $('#demo').style.display = 'block';
-  tiles(data.totals); bars(data.repos);
+  tiles(data.totals); bars(data.repos); leaders(data);
   [...new Set(data.repos.map((r) => r.language).filter(Boolean))].sort().forEach((l) => $('#fl').insertAdjacentHTML('beforeend', `<option>${esc(l)}</option>`));
   render();
   $('#head').addEventListener('click', (e) => e.target.dataset.k && sortBy(e.target.dataset.k));
@@ -202,11 +226,13 @@ function sortBy(k) { sortDir = k === sortKey ? -sortDir : (['name', 'description
 
 // Tooltip batang
 const tip = $('#tip');
-$('#bars').addEventListener('mousemove', (e) => {
-  const row = e.target.closest('.bar-row'); if (!row) { tip.style.opacity = 0; return; }
-  tip.textContent = row.dataset.tip; tip.style.opacity = 1; tip.style.left = e.clientX + 12 + 'px'; tip.style.top = e.clientY + 12 + 'px';
+['#bars', '#lb'].forEach((s) => {
+  $(s).addEventListener('mousemove', (e) => {
+    const row = e.target.closest('.bar-row'); if (!row) { tip.style.opacity = 0; return; }
+    tip.textContent = row.dataset.tip; tip.style.opacity = 1; tip.style.left = e.clientX + 12 + 'px'; tip.style.top = e.clientY + 12 + 'px';
+  });
+  $(s).addEventListener('mouseleave', () => (tip.style.opacity = 0));
 });
-$('#bars').addEventListener('mouseleave', () => (tip.style.opacity = 0));
 
 // Tema
 $('#theme').addEventListener('click', () => {
