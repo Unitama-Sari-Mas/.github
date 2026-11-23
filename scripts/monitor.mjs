@@ -35,16 +35,17 @@ const query = `query($org:String!,$after:String,$since:GitTimestamp!){
   }
 }`;
 
-async function gql(variables) {
+async function gqlRaw(q, variables) {
   const res = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json', 'User-Agent': 'org-monitor' },
-    body: JSON.stringify({ query, variables }),
+    body: JSON.stringify({ query: q, variables }),
   });
   const json = await res.json();
   if (!res.ok || json.errors) throw new Error(`GraphQL gagal: ${res.status} ${JSON.stringify(json.errors || json)}`);
-  return json.data.organization.repositories;
+  return json.data;
 }
+const gql = async (variables) => (await gqlRaw(query, variables)).organization.repositories;
 
 const raw = [];
 let after = null;
@@ -99,8 +100,76 @@ const totals = {
 };
 const generatedAt = new Date().toISOString();
 
+// ---- Leaderboard kontributor rajin ----
+// Dihitung dari commit di branch utama tiap repo dalam LEADER_DAYS hari terakhir.
+// Satu commit dihitung sebagai "fitur / perubahan besar" jika:
+//   - bukan merge commit, dan bukan dari bot,
+//   - pesannya BUKAN perbaikan bug / revert / typo / chore / docs / style / format,
+//     (kecuali diawali feat/add/tambah/implement/create/buat), dan
+//   - menambahkan minimal LEADER_MIN_ADDITIONS baris kode.
+const LB_DAYS = Number(process.env.LEADER_DAYS || 30);
+const MIN_ADD = Number(process.env.LEADER_MIN_ADDITIONS || 20);
+const MASK_AUTHORS = process.env.MASK_AUTHORS === 'true'; // true = nama diganti "Kontributor #n"
+const LB_TOP = Number(process.env.LEADER_TOP || 10);
+const BOT = /\[bot\]$|^dependabot|^github-actions/i;
+const FEATURE_HINT = /^\s*(feat|feature|add|tambah|tambahkan|implement|implementasi|create|buat)\b/i;
+const NOT_NEW = /\b(fix(e[sd])?|bug(fix)?|hotfix|perbaiki|perbaikan|memperbaiki|benerin|koreksi|revert|rollback|typo|patch|chore|docs?|style|lint|format|bump|merge)\b/i;
+
+const historyQuery = `query($owner:String!,$name:String!,$since:GitTimestamp!,$after:String){
+  repository(owner:$owner,name:$name){ defaultBranchRef{ target{ ... on Commit{
+    history(since:$since, first:100, after:$after){
+      pageInfo{hasNextPage endCursor}
+      nodes{ messageHeadline additions deletions parents{totalCount} author{ name user{login} } }
+    }
+  }}}}
+}`;
+
+async function loadLeaderboard() {
+  const lbSince = new Date(Date.now() - LB_DAYS * DAY).toISOString();
+  const people = new Map();
+  for (const r of raw.filter((x) => !x.isFork && !x.isArchived && x.name !== '.github')) {
+    let cursor = null;
+    try {
+      for (;;) {
+        const d = await gqlRaw(historyQuery, { owner: ORG, name: r.name, since: lbSince, after: cursor });
+        const h = d.repository?.defaultBranchRef?.target?.history;
+        if (!h) break;
+        for (const c of h.nodes) {
+          if (c.parents.totalCount > 1) continue; // merge commit
+          const login = c.author?.user?.login || null;
+          const id = login || c.author?.name || 'unknown';
+          if (BOT.test(login || id)) continue;
+          const p = people.get(id) || { id, login, name: c.author?.name || login || id, qualifying: 0, additions: 0, commits: 0, fixes: 0, repos: new Set() };
+          p.commits++;
+          const isFeature = FEATURE_HINT.test(c.messageHeadline) || !NOT_NEW.test(c.messageHeadline);
+          if (!isFeature) p.fixes++;
+          else if (c.additions >= MIN_ADD) { p.qualifying++; p.additions += c.additions; p.repos.add(r.name); }
+          people.set(id, p);
+        }
+        if (!h.pageInfo.hasNextPage) break;
+        cursor = h.pageInfo.endCursor;
+      }
+    } catch (e) { console.warn(`Riwayat ${r.name} dilewati: ${e.message}`); }
+  }
+  return [...people.values()]
+    .filter((p) => p.qualifying > 0)
+    .sort((a, b) => b.qualifying - a.qualifying || b.additions - a.additions)
+    .slice(0, LB_TOP)
+    .map((p, i) => ({
+      rank: i + 1,
+      name: MASK_AUTHORS ? `Kontributor #${i + 1}` : p.name,
+      avatar: !MASK_AUTHORS && p.login ? `https://github.com/${p.login}.png?size=48` : null,
+      qualifying: p.qualifying,
+      additions: p.additions,
+      commits: p.commits,
+      fixes: p.fixes,
+      repos: p.repos.size,
+    }));
+}
+const leaderboard = await loadLeaderboard();
+
 mkdirSync('docs/data', { recursive: true });
-writeFileSync(DATA, JSON.stringify({ org: ORG, generatedAt, includePrivate: INCLUDE_PRIVATE, totals, repos }, null, 2) + '\n');
+writeFileSync(DATA, JSON.stringify({ org: ORG, generatedAt, includePrivate: INCLUDE_PRIVATE, leaderDays: LB_DAYS, leaderMinAdditions: MIN_ADD, totals, repos, leaderboard }, null, 2) + '\n');
 
 // ---- README ----
 const H = { active: '🟢 Aktif', slow: '🟡 Lambat', stale: '🔴 Stagnan', archived: '⚪ Arsip' };
@@ -128,5 +197,22 @@ const block = [
 const md = readFileSync(README, 'utf8');
 const re = /<!--MONITOR:START-->[\s\S]*?<!--MONITOR:END-->/;
 if (!re.test(md)) { console.error('Penanda MONITOR:START/END tidak ada di README'); process.exit(1); }
-writeFileSync(README, md.replace(re, () => block));
+let out = md.replace(re, () => block);
+
+// Bagian leaderboard di README (dibuat otomatis jika penanda belum ada)
+const medal = ['🥇', '🥈', '🥉'];
+const lbBlock = [
+  '<!--LEADER:START-->',
+  leaderboard.length
+    ? ['| # | Kontributor | Fitur / perubahan besar | Baris ditambah |', '|:-:|---|---:|---:|',
+        ...leaderboard.slice(0, 5).map((p) => `| ${medal[p.rank - 1] ?? p.rank} | ${esc(p.name)} | ${p.qualifying} | ${p.additions.toLocaleString('id-ID')} |`)].join('\n')
+    : '_Belum ada data kontributor._',
+  '',
+  `<sub>${LB_DAYS} hari terakhir. Hanya commit fitur dan perubahan besar (minimal ${MIN_ADD} baris); perbaikan bug, revert, merge, dan commit kecil tidak dihitung.</sub>`,
+  '<!--LEADER:END-->',
+].join('\n');
+const reLb = /<!--LEADER:START-->[\s\S]*?<!--LEADER:END-->/;
+if (reLb.test(out)) out = out.replace(reLb, () => lbBlock);
+else out = out.replace('<!--MONITOR:END-->', () => `<!--MONITOR:END-->\n\n## 🏆 Kontributor rajin\n\n${lbBlock}`);
+writeFileSync(README, out);
 console.log(`OK: ${repos.length} repo diproses`);
