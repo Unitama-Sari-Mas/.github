@@ -1,6 +1,6 @@
 {
   "org": "Unitama-Sari-Mas",
-  "generatedAt": "2026-11-27T08:38:20.271Z",
+  "generatedAt": "2026-11-27T21:19:45.287Z",
   "includePrivate": true,
   "leaderDays": 30,
   "leaderMinAdditions": 20,
@@ -8,9 +8,9 @@
     "repos": 25,
     "active": 9,
     "stale": 16,
-    "commits30d": 409,
+    "commits30d": 395,
     "openIssues": 0,
-    "openPRs": 6,
+    "openPRs": 5,
     "ciFailing": 0
   },
   "repos": [
@@ -24,11 +24,11 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
-      "openPRs": 5,
-      "commits30d": 144,
+      "openPRs": 4,
+      "commits30d": 136,
       "ci": "none",
       "health": "active",
-      "pushedAt": "2026-11-27T07:03:53Z"
+      "pushedAt": "2026-11-27T09:51:54Z"
     },
     {
       "name": "Repo privat #2",
@@ -41,7 +41,7 @@
       "forks": 0,
       "openIssues": 0,
       "openPRs": 1,
-      "commits30d": 171,
+      "commits30d": 165,
       "ci": "none",
       "health": "active",
       "pushedAt": "2026-11-26T09:55:07Z"
@@ -430,20 +430,20 @@
       "rank": 2,
       "name": "Scaven",
       "avatar": "https://github.com/Devastator-19.png?size=48",
-      "qualifying": 55,
-      "additions": 25728,
-      "commits": 117,
-      "fixes": 46,
+      "qualifying": 54,
+      "additions": 25537,
+      "commits": 113,
+      "fixes": 44,
       "repos": 3
     },
     {
       "rank": 3,
       "name": "gardian-stack",
       "avatar": "https://github.com/gardian-stack.png?size=48",
-      "qualifying": 21,
-      "additions": 5185,
-      "commits": 34,
-      "fixes": 6,
+      "qualifying": 20,
+      "additions": 4792,
+      "commits": 31,
+      "fixes": 5,
       "repos": 1
     },
     {
