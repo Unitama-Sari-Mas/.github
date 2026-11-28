@@ -1,6 +1,6 @@
 {
   "org": "Unitama-Sari-Mas",
-  "generatedAt": "2026-11-27T21:19:45.287Z",
+  "generatedAt": "2026-11-28T07:52:44.385Z",
   "includePrivate": true,
   "leaderDays": 30,
   "leaderMinAdditions": 20,
@@ -8,9 +8,9 @@
     "repos": 25,
     "active": 9,
     "stale": 16,
-    "commits30d": 395,
+    "commits30d": 390,
     "openIssues": 0,
-    "openPRs": 5,
+    "openPRs": 4,
     "ciFailing": 0
   },
   "repos": [
@@ -24,11 +24,11 @@
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
-      "openPRs": 4,
-      "commits30d": 136,
+      "openPRs": 3,
+      "commits30d": 133,
       "ci": "none",
       "health": "active",
-      "pushedAt": "2026-11-27T09:51:54Z"
+      "pushedAt": "2026-11-28T05:53:53Z"
     },
     {
       "name": "Repo privat #2",
@@ -41,7 +41,7 @@
       "forks": 0,
       "openIssues": 0,
       "openPRs": 1,
-      "commits30d": 165,
+      "commits30d": 163,
       "ci": "none",
       "health": "active",
       "pushedAt": "2026-11-26T09:55:07Z"
@@ -430,10 +430,10 @@
       "rank": 2,
       "name": "Scaven",
       "avatar": "https://github.com/Devastator-19.png?size=48",
-      "qualifying": 54,
-      "additions": 25537,
-      "commits": 113,
-      "fixes": 44,
+      "qualifying": 51,
+      "additions": 24383,
+      "commits": 109,
+      "fixes": 43,
       "repos": 3
     },
     {
@@ -452,8 +452,8 @@
       "avatar": "https://github.com/abrag75.png?size=48",
       "qualifying": 11,
       "additions": 15183,
-      "commits": 40,
-      "fixes": 27,
+      "commits": 39,
+      "fixes": 26,
       "repos": 1
     },
     {
